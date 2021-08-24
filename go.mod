@@ -1,4 +1,4 @@
-module github.com/dod-iac/terraform-aws-cloudwatch-kms-key
+module github.com/dod-iac/terraform-aws-rds-kms-key
 
 go 1.16
 
