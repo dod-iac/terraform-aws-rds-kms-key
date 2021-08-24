@@ -65,7 +65,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_description"></a> [description](#input\_description) | The description of the key as viewed in AWS console. | `string` | `"A KMS key used to encrypt data-at-rest stored in CloudWatch Logs."` | no |
 | <a name="input_key_deletion_window_in_days"></a> [key\_deletion\_window\_in\_days](#input\_key\_deletion\_window\_in\_days) | Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. | `string` | `30` | no |
-| <a name="input_name"></a> [name](#input\_name) | The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/). | `string` | `"alias/cloudwatch"` | no |
+| <a name="input_name"></a> [name](#input\_name) | The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/). | `string` | `"alias/rds"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags applied to the KMS key. | `map(string)` | `{}` | no |
 
 ## Outputs

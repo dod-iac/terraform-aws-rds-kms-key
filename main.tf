@@ -71,10 +71,7 @@ data "aws_iam_policy_document" "rds" {
     principals {
       type = "Service"
       identifiers = [
-        format(
-          "rds.%s.amazonaws.com",
-          data.aws_region.current.name
-        )
+        "rds.amazonaws.com",
       ]
     }
     resources = ["*"]
