@@ -4,8 +4,8 @@
 Creates a KMS key used to encrypt data-at-rest stored in CloudWatch Logs
 
 ```hcl
-module "cloudwatch_kms_key" {
-  source = "dod-iac/cloudwatch-kms-key/aws"
+module "rds_kms_key" {
+  source = "dod-iac/rds-kms-key/aws"
 
   name = "alias/name"
 
@@ -23,9 +23,9 @@ Run all terratest tests using the `terratest` script.  If using `aws-vault`, you
 
 ## Terraform Version
 
-Terraform 0.12. Pin module version to ~> 1.0.0 . Submit pull-requests to master branch.
+Terraform 1.0. Pin module version to ~> 1.0.0 . Submit pull-requests to master branch.
 
-Terraform 0.11 is not supported.
+Previous versions not supported or use at your own risk.
 
 ## License
 
@@ -52,10 +52,10 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_kms_alias.cloudwatch](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) | resource |
-| [aws_kms_key.cloudwatch](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
+| [aws_kms_alias.rds](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) | resource |
+| [aws_kms_key.rds](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
-| [aws_iam_policy_document.cloudwatch](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.rds](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_partition.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/partition) | data source |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
 
