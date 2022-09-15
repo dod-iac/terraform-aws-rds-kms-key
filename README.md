@@ -23,9 +23,9 @@ Run all terratest tests using the `terratest` script.  If using `aws-vault`, you
 
 ## Terraform Version
 
-Terraform 1.0. Pin module version to ~> 1.0.0 . Submit pull-requests to master branch.
+Terraform 0.13. Pin module version to ~> 1.0.0 . Submit pull-requests to main branch.
 
-Previous versions not supported or use at your own risk.
+Terraform 0.11 and 0.12 are not supported.
 
 ## License
 
@@ -36,13 +36,13 @@ This project constitutes a work of the United States Government and is not subje
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 3.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.0, < 5.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 3.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.0, < 5.0 |
 
 ## Modules
 
@@ -63,7 +63,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_description"></a> [description](#input\_description) | The description of the key as viewed in AWS console. | `string` | `"A KMS key used to encrypt data-at-rest stored in CloudWatch Logs."` | no |
+| <a name="input_description"></a> [description](#input\_description) | The description of the key as viewed in AWS console. | `string` | `"A KMS key used to encrypt data at-rest in RDS databases."` | no |
 | <a name="input_key_deletion_window_in_days"></a> [key\_deletion\_window\_in\_days](#input\_key\_deletion\_window\_in\_days) | Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. | `string` | `30` | no |
 | <a name="input_name"></a> [name](#input\_name) | The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/). | `string` | `"alias/rds"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags applied to the KMS key. | `map(string)` | `{}` | no |
