@@ -7,7 +7,7 @@ executors:
   main:
     working_directory: ~/project/
     docker:
-      - image: cimg/base:2021.07
+      - image: cimg/base:2022.09
 
 jobs:
   test:
@@ -22,6 +22,7 @@ jobs:
             set -euo pipefail
             cd ~
             mkdir -p ~/bin
+            echo "Installing terraform-docs version v${TERRAFORM_DOCS_VERSION}"
             curl -sSLO https://github.com/terraform-docs/terraform-docs/releases/download/v${TERRAFORM_DOCS_VERSION}/terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64.tar.gz
             curl -sSLO https://github.com/terraform-docs/terraform-docs/releases/download/v${TERRAFORM_DOCS_VERSION}/terraform-docs-v${TERRAFORM_DOCS_VERSION}.sha256sum
             [ $(sha256sum terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64.tar.gz | cut -f1 -d' ') = $(grep linux-amd64 terraform-docs-v${TERRAFORM_DOCS_VERSION}.sha256sum | cut -f1 -d' ') ]
@@ -41,8 +42,8 @@ jobs:
             sudo mv go /usr/local
             echo 'export PATH=$PATH:/usr/local/go/bin' >> $BASH_ENV
           environment:
-            GO_VERSION: "1.17.4"
-            GO_CHECKSUM: "adab2483f644e2f8a10ae93122f0018cef525ca48d0b8764dae87cb5f4fd4206"
+            GO_VERSION: "1.19.1"
+            GO_CHECKSUM: "acc512fbab4f716a8f97a8b3fbaa9ddd39606a28be6c2515ef7c6c6311acffde"
       - run: echo 'export PATH=~/bin:$PATH' >> $BASH_ENV
       - run: make update_docs
       - run: make format_terraform
