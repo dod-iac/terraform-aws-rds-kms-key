@@ -1,7 +1,7 @@
 variable "description" {
   type        = string
   description = "The description of the key as viewed in AWS console."
-  default     = "A KMS key used to encrypt data-at-rest stored in CloudWatch Logs."
+  default     = "A KMS key used to encrypt data at-rest in RDS databases."
 }
 
 variable "key_deletion_window_in_days" {
