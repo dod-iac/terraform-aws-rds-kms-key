@@ -20,7 +20,7 @@ PATH=%~dp0bin;%PATH%
 
 rem set common variables for targets
 
-set "USAGE=Usage: %~n0 [clean|format_terraform|update_docs|help]"
+set "USAGE=Usage: %~n0 [clean|fmt|format_terraform|help|imports|staticcheck|tidy|update_docs]"
 
 rem if no target, then print usage and exit
 if [%1]==[] (
@@ -28,12 +28,16 @@ if [%1]==[] (
   exit /B 1
 )
 
-REM remove bin directory
-
 if %1%==clean (
 
+  REM remove bin directory
   if exist %~dp0bin (
     rd /s /q %~dp0bin
+  )
+
+  REM remove temp directory
+  if exist %~dp0temp (
+    rd /s /q %~dp0temp
   )
 
   exit /B 0
@@ -53,17 +57,14 @@ if %1%==format_terraform (
     exit /B 1
   )
 
-  terraform fmt
-
-  for /R "%~dp0examples" %%e in (.) do (
-    if exist %%e\main.tf (
-      pushd %%e
-      terraform fmt
-      popd
-    )
-  )
+  powershell "%~dp0powershell\format-terraform.ps1"
 
   exit /B 0
+)
+
+if %1%==help (
+  echo|set /p="%USAGE%"
+  exit /B 1
 )
 
 if %1%==imports (
@@ -102,22 +103,9 @@ if %1%==update_docs (
     exit /B 1
   )
 
-  powershell "%~dp0scripts\update-readme-windows.ps1"
-
-  for /R "%~dp0examples" %%e in (.) do (
-    if exist %%e\main.tf (
-      pushd %%e
-      powershell "%~dp0scripts\update-readme-windows.ps1"
-      popd
-    )
-  )
+  powershell "%~dp0powershell\update-docs.ps1"
 
   exit /B 0
-)
-
-if %1%==help (
-  echo|set /p="%USAGE%"
-  exit /B 1
 )
 
 echo|set /p="%USAGE%"
